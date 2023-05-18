@@ -230,8 +230,8 @@ export default function ComplexNavbar() {
         >
           <div className="flex justify-center items-center">
             <img
-              className="h-16"
-              src="https://s3-us-west-2.amazonaws.com/issuewireassets/primg/105657/skillotoyscom-a-curated-educational-toys-learning-furniture-online-store1345431857.png"
+              className="h-20"
+              src="https://images.vexels.com/media/users/3/189965/isolated/preview/2fa8f49698539df25f9d1bb0ea22e5d9-toy-dice-icon.png"
               alt=""
             />
             <h4 className="md:text-3xl">LearnPlay Haven</h4>
