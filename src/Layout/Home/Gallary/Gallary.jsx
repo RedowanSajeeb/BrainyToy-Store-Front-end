@@ -36,7 +36,7 @@ const renderRowContainer = ({
 );
 
 const renderPhoto = ({
-  layout,
+ 
   layoutOptions,
   imageProps: { alt, style, ...restImageProps },
 }) => (
@@ -65,7 +65,7 @@ const renderPhoto = ({
         textAlign: "center",
       }}
     >
-      {Math.round(layout.width) + " x " + Math.round(layout.height)}
+      {/* {} */}
     </div>
   </div>
 );
@@ -73,6 +73,11 @@ const renderPhoto = ({
 export default function Gallary() {
   return (
     <div className="">
+      <div className="text-center">
+       
+          <h1 className="text-6xl font-bold mt-14 mb-10">Our Gallery</h1>
+        
+      </div>
       <PhotoAlbum
         className="grid grid-cols-1 md:grid-cols-3 gap-5"
         layout="rows"
