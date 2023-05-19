@@ -72,10 +72,10 @@ const renderPhoto = ({
 
 export default function Gallary() {
   return (
-    <div className="">
+    <div className="p-3 md:p-5">
       <div className="text-center">
        
-          <h1 className="text-6xl font-bold mt-14 mb-10">Our Gallery</h1>
+          <h1 className="md:text-5xl font-bold mt-14 mb-10">Our Gallery</h1>
         
       </div>
       <PhotoAlbum

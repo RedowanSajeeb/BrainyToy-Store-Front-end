@@ -7,10 +7,12 @@ import Slider from "./Slider";
 
 const Home = () => {
     return (
-        <div>
-            <Slider></Slider>
-            <Gallary></Gallary>
+      <div>
+        <Slider></Slider>
+        <div className="max-w-fit mx-auto">
+          <Gallary></Gallary>
         </div>
+      </div>
     );
 };
 
