@@ -5,10 +5,11 @@ import Navbar from "../Pages/Sheard/Navbar";
 
 const Main = () => {
     return (
-        <div className="">
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-        </div>
+      <div>
+        <Navbar></Navbar>
+          <Outlet></Outlet>
+       
+      </div>
     );
 };
 
