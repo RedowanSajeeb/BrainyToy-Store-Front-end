@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Navbar,
   MobileNav,
@@ -11,6 +11,7 @@ import {
   Avatar,
   Card,
   IconButton,
+  Tooltip,
 } from "@material-tailwind/react";
 import {
   HomeIcon,
@@ -26,6 +27,7 @@ import {
   Bars2Icon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 // profile menu component
 const profileMenuItems = [
@@ -55,6 +57,8 @@ function ProfileMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
 
+  const {user} = useContext(AuthContext)
+  console.log(user);
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>
@@ -63,13 +67,28 @@ function ProfileMenu() {
           color="blue-gray"
           className="flex items-center md:me-20 gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
         >
-          <Avatar
-            variant="circular"
-            size="sm"
-            alt="candice wu"
-            className="border border-blue-500 p-0.5"
-            src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
-          />
+          {user ? (
+            <>
+              <Tooltip content={user.displayName} placement="top">
+                <img
+                  className="h-10 rounded-full "
+                  src={user.photoURL}
+                  alt=""
+                />
+              </Tooltip>
+            </>
+          ) : (
+            <>
+              <Avatar
+                variant="circular"
+                size="sm"
+                alt="candice wu"
+                className="border border-blue-500 p-0.5"
+                src="https://cdn.onlinewebfonts.com/svg/img_237553.png"
+              />
+            </>
+          )}
+
           <ChevronDownIcon
             strokeWidth={2.5}
             className={`h-3 w-3 transition-transform ${
@@ -174,7 +193,7 @@ function NavListMenu() {
 // nav list component
 const navListItems = [
   {
-    label: "Home",
+    label: <Link to={"/"}>Home</Link>,
     icon: HomeIcon,
   },
   {

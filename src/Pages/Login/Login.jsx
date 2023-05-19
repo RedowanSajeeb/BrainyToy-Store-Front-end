@@ -6,95 +6,18 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { Toaster, toast } from "react-hot-toast";
-const Registration = () => {
-const { createUserWithEmailAndPass, googleAuthenticate } =
-  useContext(AuthContext);
-
-    const registerFormHandler = (event) =>{
-      event.preventDefault();
-      const formdata = event.target;
-      const name = formdata.name.value;
-      const email = formdata.email.value;
-      const password = formdata.password.value;
-      const confirmPassword = formdata.confirmPassword.value;
-      const PhotoUrl = formdata.PhotoUrl.value;
-
-      if(password !== confirmPassword){
-        return toast.error(
-          "This didn't work The password and confirm password values do not match."
-        );
-      }
-    //  ------------------regular expression password validation having special characters
-
-    if (!/^(?=.*[A-Z]).*$/.test(password)) {
-      return toast.error(
-        "Password must have at least one Uppercase Character."
-      );
-    }
-    if (!/^(?=.*[a-z]).*$/.test(password)){
-      return toast.error(
-        "Password must have at least one Lowercase Character."
-      );
-    }
-    if (!/^(?=.*[0-9]).*$/.test(password)){
-      return toast.error("Password must contain at least one Digit");
-    }
-      console.log(name, email, password, confirmPassword, PhotoUrl);
-
-      // createUserWithEmailAndPassword
-
-  createUserWithEmailAndPass(email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log(user);
-      if(user){
-        toast.success(
-          "Congratulations on successfully registering !"
-        );
-      }
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode,errorMessage);
-      toast.error(errorCode,errorMessage);
-      // ..
-    });
-
-    }
-// --------loginwithGoogleHandelar
-const loginwithGoogleHandelar = () =>{
-  googleAuthenticate()
-    .then((result) => {
-
-      // const credential = GoogleAuthProvider.credentialFromResult(result);
-      // const token = credential.accessToken;
-      
-      const user = result.user;
-      if(user){
-        toast.success("Login successful! Welcome to your account");
-      }
- 
-    
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      if(errorCode || errorMessage){
-        toast.error(errorMessage,errorCode)
-      }
-    
-      
-    });
-}
-
+const Login = () => {
+     const registerFormHandler = (event) => {
+       event.preventDefault();
+       const formdata = event.target;
+       const name = formdata.name.value;
+       const email = formdata.email.value;
+       const password = formdata.password.value;
+       const confirmPassword = formdata.confirmPassword.value;
+       const PhotoUrl = formdata.PhotoUrl.value;
+       console.log(name, email, password, confirmPassword, PhotoUrl);
+     };
     return (
       <div>
         <Card
@@ -103,10 +26,10 @@ const loginwithGoogleHandelar = () =>{
           shadow={false}
         >
           <Typography variant="h4" color="blue-gray">
-            Sign Up
+            Sign in
           </Typography>
           <Typography color="gray" className="mt-1 font-normal">
-            Enter your details to register.
+            Enter your details to Sign in.
           </Typography>
           <form
             onSubmit={registerFormHandler}
@@ -158,11 +81,10 @@ const loginwithGoogleHandelar = () =>{
               <Button className="mt-6" fullWidth>
                 Register
               </Button>
-              <Toaster />
             </button>
             <div className="flex flex-col w-full border-opacity-200">
               <div className="grid h-10 mt-4 card border rounded-box place-items-center">
-                <div onClick={loginwithGoogleHandelar} className="absolute  flex items-center justify-center ms-5">
+                <div className="absolute  flex items-center justify-center ms-5">
                   <img
                     className="h-7 me-2"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
@@ -184,12 +106,12 @@ const loginwithGoogleHandelar = () =>{
               </div>
             </div>
             <Typography color="gray" className="mt-4 text-center font-normal">
-              Already have an account?{" "}
-              <Link
-                to={"/sign-in"}
+              registration ?
+               <Link
+                to={"/registration"}
                 className="font-medium text-blue-500 transition-colors hover:text-blue-700"
               >
-                Sign In
+                Sign Up
               </Link>
             </Typography>
           </form>
@@ -198,4 +120,4 @@ const loginwithGoogleHandelar = () =>{
     );
 };
 
-export default Registration;
+export default Login;

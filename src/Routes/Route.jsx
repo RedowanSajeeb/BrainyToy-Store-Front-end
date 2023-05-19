@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Home from "../Layout/Home/Home";
 import F404 from "../Pages/FourOfour/F404";
 import Registration from "../Pages/Registration/Registration";
+import Login from "../Pages/Login/Login";
 
 
 const router = createBrowserRouter([
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/registration",
-        element : <Registration></Registration>
+        element: <Registration></Registration>,
+      },
+      {
+        path: "/sign-in",
+        element: <Login></Login>
       },
     ],
   },
