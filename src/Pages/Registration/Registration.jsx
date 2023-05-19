@@ -9,9 +9,9 @@ import {
 import { Link } from "react-router-dom";
 const Registration = () => {
     return (
-      <div className="">
+      <div>
         <Card
-          className="mx-auto  max-w-max mt-5 md:mt-14"
+          className="mx-auto  max-w-max mt-5 "
           color="transparent"
           shadow={false}
         >
@@ -37,18 +37,16 @@ const Registration = () => {
                   className="flex items-center font-normal"
                 >
                   I agree the
-                  <a
-                    href="#"
+                  <Link
+                    to="https://en.wikipedia.org/wiki/Terms_of_service"
                     className="font-medium transition-colors hover:text-blue-500"
                   >
-                    <Link
-                      to={"https://en.wikipedia.org/wiki/Terms_of_service"}
-                      target="blank"
-                      className="text-deep-orange-500"
-                    >
-                      &nbsp;Terms and Conditions
-                    </Link>
-                  </a>
+                    &nbsp;{" "}
+                    <span className="text-deep-orange-500">
+                      {" "}
+                      Terms and Conditions
+                    </span>
+                  </Link>
                 </Typography>
               }
               containerProps={{ className: "-ml-2.5" }}
@@ -56,14 +54,37 @@ const Registration = () => {
             <Button className="mt-6" fullWidth>
               Register
             </Button>
+            <div className="flex flex-col w-full border-opacity-200">
+              <div className="grid h-10 mt-4 card border rounded-box place-items-center">
+                <div className="absolute  flex items-center justify-center ms-5">
+                  <img
+                    className="h-7 me-2"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
+                    alt=""
+                  />
+                  <h6 className="text-lg font-medium">Login with Google</h6>
+                </div>
+              </div>
+              <div className="divider">OR</div>
+              <div className="grid h-10  border card  rounded-box place-items-center">
+                <div className="absolute  flex items-center justify-center ms-5">
+                  <img
+                    className="h-7 me-2"
+                    src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/480px-Facebook_f_logo_%282021%29.svg.png"
+                    alt=""
+                  />
+                  <h6 className="text-lg font-medium">Login with Facebook</h6>
+                </div>
+              </div>
+            </div>
             <Typography color="gray" className="mt-4 text-center font-normal">
               Already have an account?{" "}
-              <a
+              <Link
                 href="#"
                 className="font-medium text-blue-500 transition-colors hover:text-blue-700"
               >
                 Sign In
-              </a>
+              </Link>
             </Typography>
           </form>
         </Card>
