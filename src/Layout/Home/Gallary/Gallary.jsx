@@ -75,10 +75,10 @@ export default function Gallary() {
     <div className="">
       <PhotoAlbum
         className="grid grid-cols-1 md:grid-cols-3 gap-5"
-        layout="columns"
+        layout="rows"
         photos={photos}
-        spacing={18}
-        padding={30}
+        spacing={30}
+        padding={20}
         targetRowHeight={200}
         renderContainer={renderContainer}
         renderRowContainer={renderRowContainer}
