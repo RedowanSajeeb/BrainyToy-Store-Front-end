@@ -14,10 +14,9 @@ import {
   Tooltip,
 } from "@material-tailwind/react";
 import {
-  HomeIcon,
-  CubeTransparentIcon,
+
   UserCircleIcon,
-  CodeBracketSquareIcon,
+ 
   ChevronDownIcon,
   Cog6ToothIcon,
   InboxArrowDownIcon,
@@ -199,24 +198,7 @@ function NavListMenu() {
 }
 
 // nav list component
-const navListItems = [
-  {
-    label: <Link to={"/"}>Home</Link>,
-    icon: HomeIcon,
-  },
-  {
-    label: "All Toys",
-    icon: CubeTransparentIcon,
-  },
-  // {
-  // label: { user && {"All Toys"} },
-  //   icon: CubeTransparentIcon,
-  // },
-  {
-    label: "Blogs",
-    icon: CodeBracketSquareIcon,
-  },
-];
+
 
 function NavList() {
   const { user } = useContext(AuthContext);
@@ -224,21 +206,14 @@ function NavList() {
   return (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
       <NavListMenu />
-      {navListItems.map(({ label, icon }, index) => (
-        <Typography
-          as="a"
-          to="/"
-          key={index} // Assigning the index as the key
-          variant="small"
-          color="blue-gray"
-          className="font-normal"
-        >
-          <MenuItem className="flex items-center gap-2 lg:rounded-full">
-            {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
-            {label}
+
+      <Link to={"/"}>
+        <Typography>
+          <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
+            Home
           </MenuItem>
         </Typography>
-      ))}
+      </Link>
       <Link to={"/allToys"}>
         <Typography>
           <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
@@ -246,6 +221,15 @@ function NavList() {
           </MenuItem>
         </Typography>
       </Link>
+      {!user ? (
+        <Link to={"/signin"}>
+          <Typography>
+            <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
+              Login
+            </MenuItem>
+          </Typography>
+        </Link>
+      ) : null}
       {user && (
         <Typography>
           <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
@@ -262,6 +246,13 @@ function NavList() {
           </Typography>
         </Link>
       )}
+      <Link to={"/blogs"}>
+        <Typography>
+          <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
+            Blogs
+          </MenuItem>
+        </Typography>
+      </Link>
     </ul>
   );
 }
