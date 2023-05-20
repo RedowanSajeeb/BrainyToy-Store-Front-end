@@ -7,7 +7,9 @@ const ALLToys = () => {
     console.log(allToys);
     return (
         <div>
-            
+            {
+                
+            }
         </div>
     );
 };
