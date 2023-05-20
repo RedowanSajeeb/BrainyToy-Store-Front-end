@@ -281,7 +281,7 @@ export default function ComplexNavbar() {
               src="https://images.vexels.com/media/users/3/189965/isolated/preview/2fa8f49698539df25f9d1bb0ea22e5d9-toy-dice-icon.png"
               alt=""
             />
-            <span className="md:text-3xl">LearnPlay Haven</span>
+            <span className="md:text-3xl">BrainyToy Store</span>
           </div>
         </Typography>
         <div className="absolute top-2/4 left-2/4 hidden -translate-x-2/4 -translate-y-2/4 lg:block">
