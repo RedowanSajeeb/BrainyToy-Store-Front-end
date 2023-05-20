@@ -1,33 +1,45 @@
 // import React from 'react';
 import { Button, Input, Option, Select, Textarea } from "@material-tailwind/react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 const AddAToy = () => {
+  const [temp, setTemp] = useState();
   const { user } = useContext(AuthContext);
   console.log(user?.displayName);
 
-
+   const handleChange = (e) => {
+     setTemp(e);
+   };
+ 
   const addANewToyHandlersCallback = (event) => {
-     event.preventDefault();
-     
-     const fieldValue = event.target;
-     const toyPictureURL = fieldValue.toyPictureURL.value;
-     const toyName = fieldValue.toyName.value;
-     const email = fieldValue.email.value;
-     const sellername = fieldValue.sellername.value;
-     const price = fieldValue.price.value;
-     const rating = fieldValue.rating.value;
-     const quantity = fieldValue.quantity.value;
-     const category = fieldValue.category.value;
+    event.preventDefault();
+
+    const fieldValue = event.target;
+    const toyPictureURL = fieldValue.toyPictureURL.value;
+    const toyName = fieldValue.toyName.value;
+    const email = fieldValue.email.value;
+    const sellername = fieldValue.sellername.value;
+    const price = fieldValue.price.value;
+    const rating = fieldValue.rating.value;
+    const quantity = fieldValue.quantity.value;
+    const category = temp
     const description = fieldValue.description.value;
- console.log(toyPictureURL, toyName, email,sellername, price, quantity, category, price, rating, quantity,description);
-
-
-
-     
-  }
-
-
+    console.log(
+      toyPictureURL,
+      toyName,
+      email,
+      sellername,
+      price,
+      quantity,
+      category,
+      price,
+      rating,
+      quantity,
+      description
+    );
+  };
+  
+  
   return (
     <div>
       <h1 className="text-center  mt-5 md:text-5xl">
@@ -76,13 +88,15 @@ const AddAToy = () => {
               type="number"
               label="Available quantity"
             />
-            <Select name="category" label="Category" value={null}>
-              <Option value="Math Toys">Math Toys</Option>
-              <Option value="Science Toys">Science Toys</Option>
-              <Option value="Language Toys">Language Toys</Option>
-              <Option value="engineering tools">engineering tools</Option>
-              {/* <Option>Material Tailwind Svelte</Option> */}
-            </Select>
+            <div className="w-full">
+              <Select onChange={handleChange} label="Select Category">
+                <Option value="Math Toys">Math Toys</Option>
+                <Option value="Science Toys">Science Toys</Option>
+                <Option value="Language Toys">Language Toys</Option>
+                <Option value="engineering tools">engineering tools</Option>
+                {/* <Option>Material Tailwind Svelte</Option> */}
+              </Select>
+            </div>
           </div>
         </div>
         <div className="w-full    mx-auto ">
