@@ -22,12 +22,13 @@ import {
   Cog6ToothIcon,
   InboxArrowDownIcon,
   LifebuoyIcon,
-  PowerIcon,
+  // PowerIcon,
   RocketLaunchIcon,
   Bars2Icon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 // profile menu component
 const profileMenuItems = [
@@ -40,25 +41,38 @@ const profileMenuItems = [
     icon: Cog6ToothIcon,
   },
   {
-    label: "Inbox",
+    label: <Link to={"/sign-in"}>Login</Link>,
     icon: InboxArrowDownIcon,
   },
   {
     label: <Link to={"/registration"}>Registration</Link>,
     icon: LifebuoyIcon,
   },
-  {
-    label: "Sign Out",
-    icon: PowerIcon,
-  },
+  // {
+  //   label: <Link>Sign Out</Link>,
+  //   icon: PowerIcon,
+  // },
 ];
 
 function ProfileMenu() {
+  const { user, logOut } = useContext(AuthContext);
+  // console.log(user);
+
+  const signOutHandelar = () =>{
+     logOut()
+       .then(() => {
+         // Sign-out successful.
+         toast.success("Sign-out successful");
+       })
+       .catch((error) => {
+         toast.error(error)
+       });
+  }
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
 
-  const {user} = useContext(AuthContext)
-  console.log(user);
+    
+
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>
@@ -125,6 +139,19 @@ function ProfileMenu() {
             </MenuItem>
           );
         })}
+        <MenuItem className="ms-0 ">
+          <button
+            onClick={signOutHandelar}
+            className=" text-red-500 flex items-center  "
+          >
+            <img
+              className="h-5  "
+              src="https://icones.pro/wp-content/uploads/2022/07/symbole-de-puissance-et-d-energie-rouge.png"
+              alt="icon"
+            />
+            <span className="ms-2 text-sm"> Sign Out</span>
+          </button>
+        </MenuItem>
       </MenuList>
     </Menu>
   );
@@ -145,7 +172,7 @@ function NavListMenu() {
   };
 
   const renderItems = navListMenuItems.map(({ title, description }) => (
-    <a href="#" key={title}>
+    <link  key={title}>
       <MenuItem>
         <Typography variant="h6" color="blue-gray" className="mb-1">
           {title}
@@ -154,17 +181,17 @@ function NavListMenu() {
           {description}
         </Typography>
       </MenuItem>
-    </a>
+    </link>
   ));
 
   return (
     <React.Fragment>
       <Menu open={isMenuOpen} handler={setIsMenuOpen}>
-        <MenuHandler>
+        {/* <MenuHandler>
           <Typography as="a" href="#" variant="small" className="font-normal">
            
           </Typography>
-        </MenuHandler>
+        </MenuHandler> */}
         <MenuList
           {...triggers}
           className="hidden w-[36rem] grid-cols-7 gap-3 overflow-visible lg:grid"
@@ -200,6 +227,10 @@ const navListItems = [
     label: "All Toys",
     icon: CubeTransparentIcon,
   },
+  // {
+  // label: { user && {"All Toys"} },
+  //   icon: CubeTransparentIcon,
+  // },
   {
     label: "Blogs",
     icon: CodeBracketSquareIcon,
@@ -207,24 +238,42 @@ const navListItems = [
 ];
 
 function NavList() {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
       <NavListMenu />
-      {navListItems.map(({ label, icon }, ) => ( //key
-        <Typography
-          key={label}
-          as="a"
-          href="#"
-          variant="small"
-          color="blue-gray"
-          className="font-normal"
-        >
-          <MenuItem className="flex items-center gap-2 lg:rounded-full">
-            {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
-            {label}
+      {navListItems.map(
+        (
+          { label, icon } //key
+        ) => (
+          <Typography
+            key={label}
+            variant="small"
+            color="blue-gray"
+            className="font-normal"
+          >
+            <MenuItem className="flex items-center gap-2 lg:rounded-full">
+              {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
+              {label}
+            </MenuItem>
+          </Typography>
+        )
+      )}
+      {user && (
+        <Typography>
+          <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
+            My Toys
           </MenuItem>
         </Typography>
-      ))}
+      )}
+      {user && (
+        <Typography>
+          <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full 2">
+            Add A Toy
+          </MenuItem>
+        </Typography>
+      )}
     </ul>
   );
 }
@@ -244,8 +293,6 @@ export default function ComplexNavbar() {
     <Navbar className="sticky inset-0 z-10 h-max max-w-full p-2  lg:pl-6">
       <div className="relative mx-auto flex items-center text-blue-gray-900">
         <Typography
-          as="a"
-          href="/"
           className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
         >
           <div className="flex justify-center items-center">

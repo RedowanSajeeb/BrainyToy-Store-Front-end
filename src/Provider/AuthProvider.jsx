@@ -1,6 +1,6 @@
 // import React from 'react';
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithPopup } from "firebase/auth";
-import { createContext, useState } from "react";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.conf";
 
 const auth = getAuth(app);
@@ -23,22 +23,32 @@ const googleAuthenticate = () =>{
     
 //  onAuthStateChanged
 
-   onAuthStateChanged(auth, (currentUser) => {
-    if (currentUser) {
-        console.log(currentUser);
-        setUser(currentUser)
-      // ...
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
+useEffect(()=>{
+ const connection = onAuthStateChanged(auth, (currentUser) => {
+   if (currentUser) {
+     console.log(currentUser);
+     setUser(currentUser);
+     // ...
+   } else {
+     return () => {
+       return connection();
+     };
+     // User is signed out
+     // ...
+   }
+ });
+},[])
 
+// signOut
 
+ const logOut = () =>{
+   return signOut(auth)
+ }
     const authInfo = {
       createUserWithEmailAndPass,
       user,
       googleAuthenticate,
+      logOut,
     };
     return (
         <AuthContext.Provider value={authInfo}>
