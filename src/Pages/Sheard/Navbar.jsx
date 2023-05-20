@@ -9,7 +9,7 @@ import {
   MenuList,
   MenuItem,
   Avatar,
-  Card,
+  
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
@@ -22,8 +22,6 @@ import {
   Cog6ToothIcon,
   InboxArrowDownIcon,
   LifebuoyIcon,
-  // PowerIcon,
-  RocketLaunchIcon,
   Bars2Icon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
@@ -41,11 +39,11 @@ const profileMenuItems = [
     icon: Cog6ToothIcon,
   },
   {
-    label: <Link to={"/sign-in"}>Login</Link>,
+    label: <Link to="/signin">Login</Link>,
     icon: InboxArrowDownIcon,
   },
   {
-    label: <Link to={"/registration"}>Registration</Link>,
+    label: <Link to="/registration">Registration</Link>,
     icon: LifebuoyIcon,
   },
   // {
@@ -116,7 +114,7 @@ function ProfileMenu() {
           const isLastItem = key === profileMenuItems.length - 1;
           return (
             <MenuItem
-              key={label}
+              key={key}
               onClick={closeMenu}
               className={`flex items-center gap-2 rounded ${
                 isLastItem
@@ -164,15 +162,15 @@ const navListMenuItems = [
 ];
 
 function NavListMenu() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const triggers = {
-    onMouseEnter: () => setIsMenuOpen(true),
-    onMouseLeave: () => setIsMenuOpen(false),
-  };
+  // const triggers = {
+  //   onMouseEnter: () => setIsMenuOpen(true),
+  //   onMouseLeave: () => setIsMenuOpen(false),
+  // };
 
-  const renderItems = navListMenuItems.map(({ title, description }) => (
-    <link  key={title}>
+  const renderItems = navListMenuItems.map(({ title, description },idx) => (
+    <link  key={idx}>
       <MenuItem>
         <Typography variant="h6" color="blue-gray" className="mb-1">
           {title}
@@ -186,30 +184,6 @@ function NavListMenu() {
 
   return (
     <React.Fragment>
-      <Menu open={isMenuOpen} handler={setIsMenuOpen}>
-        {/* <MenuHandler>
-          <Typography as="a" href="#" variant="small" className="font-normal">
-           
-          </Typography>
-        </MenuHandler> */}
-        <MenuList
-          {...triggers}
-          className="hidden w-[36rem] grid-cols-7 gap-3 overflow-visible lg:grid"
-        >
-          <Card
-            color="blue"
-            shadow={false}
-            variant="gradient"
-            className="col-span-3 grid h-full w-full place-items-center rounded-md"
-          >
-            <RocketLaunchIcon strokeWidth={1} className="h-28 w-28" />
-          </Card>
-          <ul className="col-span-4 flex w-full flex-col gap-1">
-            {renderItems}
-          </ul>
-        </MenuList>
-      </Menu>
-    
       <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden">
         {renderItems}
       </ul>
@@ -239,27 +213,24 @@ const navListItems = [
 
 function NavList() {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   return (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
       <NavListMenu />
-      {navListItems.map(
-        (
-          { label, icon } //key
-        ) => (
-          <Typography
-            key={label}
-            variant="small"
-            color="blue-gray"
-            className="font-normal"
-          >
-            <MenuItem className="flex items-center gap-2 lg:rounded-full">
-              {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
-              {label}
-            </MenuItem>
-          </Typography>
-        )
-      )}
+      {navListItems.map(({ label, icon }, index) => (
+        <Typography
+          key={index} // Assigning the index as the key
+          variant="small"
+          color="blue-gray"
+          className="font-normal"
+        >
+          <MenuItem className="flex items-center gap-2 lg:rounded-full">
+            {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
+            {label}
+          </MenuItem>
+        </Typography>
+      ))}
+
       {user && (
         <Typography>
           <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
@@ -301,7 +272,7 @@ export default function ComplexNavbar() {
               src="https://images.vexels.com/media/users/3/189965/isolated/preview/2fa8f49698539df25f9d1bb0ea22e5d9-toy-dice-icon.png"
               alt=""
             />
-            <h4 className="md:text-3xl">LearnPlay Haven</h4>
+            <span className="md:text-3xl">LearnPlay Haven</span>
           </div>
         </Typography>
         <div className="absolute top-2/4 left-2/4 hidden -translate-x-2/4 -translate-y-2/4 lg:block">

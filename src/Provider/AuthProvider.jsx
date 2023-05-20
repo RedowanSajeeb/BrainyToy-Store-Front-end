@@ -23,21 +23,15 @@ const googleAuthenticate = () =>{
     
 //  onAuthStateChanged
 
-useEffect(()=>{
- const connection = onAuthStateChanged(auth, (currentUser) => {
-   if (currentUser) {
-     console.log(currentUser);
-     setUser(currentUser);
-     // ...
-   } else {
-     return () => {
-       return connection();
-     };
-     // User is signed out
-     // ...
-   }
- });
-},[])
+  useEffect(() => {
+    const connection = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => {
+      return connection();
+    };
+  }, []);
+
 
 // signOut
 

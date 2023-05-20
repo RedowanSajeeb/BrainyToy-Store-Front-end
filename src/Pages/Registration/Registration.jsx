@@ -162,14 +162,14 @@ const loginwithGoogleHandelar = () =>{
             </button>
             <div className="flex flex-col w-full border-opacity-200">
               <div className="grid h-10 mt-4 card border rounded-box place-items-center">
-                <div onClick={loginwithGoogleHandelar} className="absolute  flex items-center justify-center ms-5">
+                <button onClick={loginwithGoogleHandelar} className="absolute  flex items-center justify-center ms-5">
                   <img
                     className="h-7 me-2"
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
                     alt=""
                   />
                   <h6 className="text-lg font-medium">Login with Google</h6>
-                </div>
+                </button>
               </div>
               <div className="divider">OR</div>
               <div className="grid h-10  border card  rounded-box place-items-center">
@@ -186,7 +186,7 @@ const loginwithGoogleHandelar = () =>{
             <Typography color="gray" className="mt-4 text-center font-normal">
               Already have an account?{" "}
               <Link
-                to={"/sign-in"}
+                to={"/signin"}
                 className="font-medium text-blue-500 transition-colors hover:text-blue-700"
               >
                 Sign In
