@@ -248,11 +248,14 @@ function NavList() {
         </Typography>
       )}
       {user && (
-        <Typography>
-          <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full 2">
-            Add A Toy
-          </MenuItem>
-        </Typography>
+        <Link to={"/addAToy"}>
+          
+          <Typography>
+            <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full 2">
+              Add A Toy
+            </MenuItem>
+          </Typography>
+        </Link>
       )}
     </ul>
   );

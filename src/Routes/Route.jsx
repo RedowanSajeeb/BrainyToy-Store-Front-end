@@ -4,6 +4,7 @@ import Home from "../Layout/Home/Home";
 import F404 from "../Pages/FourOfour/F404";
 import Registration from "../Pages/Registration/Registration";
 import Login from "../Pages/Login/Login";
+import AddAToy from "../Pages/AddAToy/AddAToy";
 
 
 const router = createBrowserRouter([
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/signin",
-        element: <Login></Login>
+        element: <Login></Login>,
+      },
+      {
+        path: "/addAToy",
+        element: <AddAToy></AddAToy>,
       },
     ],
   },
