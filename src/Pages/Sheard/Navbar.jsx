@@ -115,6 +115,9 @@ function ProfileMenu() {
           return (
             <MenuItem
               key={key}
+              as="a"
+              to="/"
+              variant="small"
               onClick={closeMenu}
               className={`flex items-center gap-2 rounded ${
                 isLastItem
@@ -219,6 +222,8 @@ function NavList() {
       <NavListMenu />
       {navListItems.map(({ label, icon }, index) => (
         <Typography
+          as="a"
+          to="/"
           key={index} // Assigning the index as the key
           variant="small"
           color="blue-gray"
