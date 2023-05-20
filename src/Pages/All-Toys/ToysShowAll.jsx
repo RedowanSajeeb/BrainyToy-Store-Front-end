@@ -2,8 +2,10 @@
 import {
   Dialog,
   DialogBody,
+  DialogFooter,
   DialogHeader,
   IconButton,
+  MenuItem,
   Typography,
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -33,16 +35,11 @@ console.log(selectedToyId);
   };
 
   return (
-    <div>
+    <div className="max-w-main mx-auto md:ms-14 md:mr-14">
       <div className="overflow-x-auto w-full mt-5 md:mt-20 mb-4 md:mb-12">
         <table className="table w-full">
           <thead>
             <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
               <th>Name & Category</th>
               <th>Price & Available Quantity</th>
               <th>Seller Name</th>
@@ -52,11 +49,6 @@ console.log(selectedToyId);
           <tbody>
             {allToys.map((toy) => (
               <tr key={toy._id}>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -99,72 +91,107 @@ console.log(selectedToyId);
       {/* Modal */}
       {showModal && (
         <Dialog
-          className="w-full"
-          size="lg"
+          className="block"
+          size="xs"
           open={showModal}
           onClose={closeModal}
         >
-          <DialogHeader className="justify-between">
+          <DialogHeader className="justify-between w-full">
             <Typography variant="h5" color="blue-gray">
-              <h1 className="text-center text-3xl md:ms-10">
-                {toyone.toyName}
-              </h1>
-              <hr className="w-full ms-5" />
+              ToyName: {toyone.toyName}
+              <img className="h-30" src={toyone.toyPictureURL} alt="" />
             </Typography>
-
             <IconButton
               color="blue-gray"
               size="xs"
+              variant="text"
               onClick={closeModal}
-              ripple="dark"
             >
               <XMarkIcon strokeWidth={2} className="h-5 w-5" />
             </IconButton>
           </DialogHeader>
-          <DialogBody className="overflow-y-scroll md:flex justify-start  ">
-            <div className="md:ms-10 text-neutral-800">
-              <img className="h-32 mb-5" src={toyone.toyPictureURL} alt="" />
-              <Typography variant="body2">
-                <span className="md:text-xl font-bold"> Category:</span>{" "}
-                {toyone.category}
+          <DialogBody className="overflow-y-scroll w-full ">
+            <div className="mb-6">
+              <Typography
+                variant="small"
+                color="gray"
+                className="font-semibold opacity-70"
+              >
+                Details
               </Typography>
-              <Typography variant="body2">
-                <span className="md:text-xl font-bold">Price:</span> $
-                {toyone.price}
-              </Typography>
-              <Typography variant="body2">
-                <span className="md:text-xl font-bold">
-                  Available Quantity:
-                </span>{" "}
-                {toyone.quantity}
-              </Typography>
-              {/* Add other details here */}
+              <ul className="mt-1 -ml-2 flex flex-col gap-1">
+                <MenuItem className="flex items-center gap-3">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1924/1924892.png"
+                    alt="metamast"
+                    className="h-6 w-6"
+                  />
+                  <Typography color="blue-gray" variant="h6">
+                    Seller Name :{" "}
+                    <span className="text-sm">{toyone.sellername}</span>
+                  </Typography>
+                </MenuItem>
+                <MenuItem className="md:flex items-center gap-3">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/2560px-Gmail_icon_%282020%29.svg.png"
+                    alt="metamast"
+                    className="h-6 w-6 rounded-md"
+                  />
+                  <Typography color="blue-gray" variant="h6">
+                    Seller Email :{" "}
+                    <span className="text-sm">{toyone.email}</span>
+                  </Typography>
+                </MenuItem>
+                <MenuItem className="flex items-center gap-3">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/4001/4001136.png"
+                    alt="metamast"
+                    className="h-6 w-6 rounded-md"
+                  />
+                  <Typography color="blue-gray" variant="h6">
+                    Rating : <span className="text-sm">{toyone.rating}</span>
+                  </Typography>
+                </MenuItem>
+              </ul>
             </div>
-            <div className="md:ms-10 mt-3 text-neutral-800">
-              <h6>
-                <span className="md:text-xl font-bold">seller name : </span>
-                {toyone.sellername}
-              </h6>
-              <h6>
-                <span className="md:text-xl font-bold">seller email: </span>{" "}
-                {toyone.email}
-              </h6>
-              <h6>
-                <span className="md:text-xl font-bold">rating : </span>
-                {toyone.rating}
-              </h6>
-              <h6>
-                <span className="md:text-xl font-bold">
-                  available quantity :
-                </span>
-                {toyone.quantity}
-              </h6>
-              <h6>
-                <span className="md:text-xl font-bold">description : </span>
-                {toyone.quantity}
-              </h6>
+            <div>
+              <Typography
+                variant="small"
+                color="gray"
+                className="font-semibold opacity-70"
+              >
+                More
+              </Typography>
+              <ul className="mt-1 -ml-2.5 flex flex-col gap-1">
+                <MenuItem className="flex items-center gap-3">
+                  <img
+                    src="https://t4.ftcdn.net/jpg/05/41/83/71/360_F_541837163_2vhlUtqGKz16Rn5g19H31GtFBathjckN.jpg"
+                    alt="metamast"
+                    className="h-7  rounded-md border border-blue-gray-50"
+                  />
+                  <Typography color="blue-gray" variant="h6">
+                    Price : <span className="text-sm">${toyone.price}</span>
+                  </Typography>
+                </MenuItem>
+                <MenuItem className="flex items-center gap-3">
+                  <img
+                    src="https://icons.veryicon.com/png/o/business/sunshine/quantity.png"
+                    alt="metamast"
+                    className="h-7  rounded-md border border-blue-gray-50"
+                  />
+                  <Typography color="blue-gray" variant="h6">
+                    available quantity
+                    <span className="text-sm">: {toyone.quantity}</span>
+                  </Typography>
+                </MenuItem>
+              </ul>
             </div>
           </DialogBody>
+          <DialogFooter className="justify-between gap-2 border-t border-blue-gray-50">
+            <Typography variant="small" color="gray" className="font-normal">
+              {toyone.description}
+            </Typography>
+          </DialogFooter>
         </Dialog>
       )}
     </div>
