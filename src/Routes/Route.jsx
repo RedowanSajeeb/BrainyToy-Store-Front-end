@@ -5,6 +5,7 @@ import F404 from "../Pages/FourOfour/F404";
 import Registration from "../Pages/Registration/Registration";
 import Login from "../Pages/Login/Login";
 import AddAToy from "../Pages/AddAToy/AddAToy";
+import ALLToys from "../Pages/All-Toys/ALLToys";
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
       {
         path: "/addAToy",
         element: <AddAToy></AddAToy>,
+      },
+      {
+        path: "/allToys",
+        element: <ALLToys></ALLToys>,
+        loader: () => fetch("http://localhost:5000/brainy"),
       },
     ],
   },

@@ -1,16 +1,23 @@
 // import React from 'react';
-import { Button, Input, Option, Select, Textarea } from "@material-tailwind/react";
+import {
+  Button,
+  Input,
+  Option,
+  Select,
+  Textarea,
+} from "@material-tailwind/react";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Toaster, toast } from "react-hot-toast";
 const AddAToy = () => {
   const [temp, setTemp] = useState();
   const { user } = useContext(AuthContext);
   console.log(user?.displayName);
 
-   const handleChange = (e) => {
-     setTemp(e);
-   };
- 
+  const handleChange = (e) => {
+    setTemp(e);
+  };
+
   const addANewToyHandlersCallback = (event) => {
     event.preventDefault();
 
@@ -22,24 +29,40 @@ const AddAToy = () => {
     const price = fieldValue.price.value;
     const rating = fieldValue.rating.value;
     const quantity = fieldValue.quantity.value;
-    const category = temp
+    const category = temp;
     const description = fieldValue.description.value;
-    console.log(
+
+    const brainyAllData = {
       toyPictureURL,
       toyName,
       email,
       sellername,
       price,
-      quantity,
-      category,
-      price,
       rating,
       quantity,
-      description
-    );
+      category,
+      description,
+    };
+
+    //  send data to server
+      fetch("http://localhost:5000/brainy",{
+       method: 'POST',
+       headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify(brainyAllData)
+
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if(data.acknowledged === true) {
+           
+            toast.success('Toy Added Successfully')
+         fieldValue.reset()
+        }
+      })
+
   };
-  
-  
+
   return (
     <div>
       <h1 className="text-center  mt-5 md:text-5xl">
@@ -107,6 +130,7 @@ const AddAToy = () => {
           <Button className="w-full mt-4 " variant="outlined">
             Add A Toy
           </Button>
+          <Toaster></Toaster>
         </button>
       </form>
     </div>
