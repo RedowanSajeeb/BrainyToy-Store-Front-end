@@ -7,11 +7,13 @@ import Footer from "../Pages/Sheard/footer";
 
 const Main = () => {
     return (
-      <div className="ms-3 me-3">
+      <>
         <Navbar></Navbar>
-        <Outlet></Outlet>
-        <Footer></Footer> 
-      </div>
+        <div className="ms-3 me-3">
+          <Outlet></Outlet>
+        </div>
+        <Footer></Footer>
+      </>
     );
 };
 
