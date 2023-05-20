@@ -88,9 +88,7 @@ const {
 
     }
 
-    
-
-
+  
 
 // --------loginwithGoogleHandelar
 const loginwithGoogleHandelar = () =>{
@@ -223,7 +221,7 @@ const loginwithFacebook = () =>{
                     alt=""
                   />
                   <h6 className="text-lg font-medium">Login with Google</h6>
-                </button>
+                </button>                
               </div>
               <div className="divider">OR</div>
               <div onClick={loginwithFacebook} className="grid h-10  border card  rounded-box place-items-center">

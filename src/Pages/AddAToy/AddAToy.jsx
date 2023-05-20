@@ -38,9 +38,9 @@ const AddAToy = () => {
             />
           </div>
           <div className="flex  flex-col gap-6">
-            <Input color="blue" label="Price" />
+            <Input color="blue" type="number" label="Price" />
             <Input color="purple" label="Rating" />
-            <Input color="indigo" label="Available quantity" />
+            <Input color="indigo" type="number" label="Available quantity" />
             <Select label="Category ">
               <Option>Math Toys</Option>
               <Option>Science Toys</Option>
