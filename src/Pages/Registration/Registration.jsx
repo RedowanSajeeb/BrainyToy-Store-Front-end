@@ -10,9 +10,14 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
+import { FacebookAuthProvider } from "firebase/auth";
 const Registration = () => {
-const { createUserWithEmailAndPass, googleAuthenticate } =
-  useContext(AuthContext);
+const {
+  createUserWithEmailAndPass,
+  googleAuthenticate,
+  userProfile,
+  authenticateUsingFacebook,
+} = useContext(AuthContext);
 
     const registerFormHandler = (event) =>{
       event.preventDefault();
@@ -52,6 +57,18 @@ const { createUserWithEmailAndPass, googleAuthenticate } =
       // Signed in
       const user = userCredential.user;
       console.log(user);
+      // -----------------------------
+        userProfile(name, PhotoUrl)
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            // An error occurred
+            // ...
+            console.log(error);
+          });
+          // --------------------------
       if(user){
         toast.success(
           "Congratulations on successfully registering !"
@@ -67,7 +84,14 @@ const { createUserWithEmailAndPass, googleAuthenticate } =
       // ..
     });
 
+    
+
     }
+
+    
+
+
+
 // --------loginwithGoogleHandelar
 const loginwithGoogleHandelar = () =>{
   googleAuthenticate()
@@ -94,6 +118,36 @@ const loginwithGoogleHandelar = () =>{
       
     });
 }
+
+// authenticateUsingFacebook
+const loginwithFacebook = () =>{
+  authenticateUsingFacebook()
+    .then((result) => {
+      // The signed-in user info.
+      const user = result.user;
+       if (user) {
+         toast.success("Login successful! Welcome to your account");
+       }
+      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+      const credential = FacebookAuthProvider.credentialFromResult(result);
+      console.log(credential);
+
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      if (errorCode || errorMessage) {
+        toast.error(errorMessage, errorCode);
+      }
+     
+    });
+    
+}
+ 
 
     return (
       <div>
@@ -172,15 +226,15 @@ const loginwithGoogleHandelar = () =>{
                 </button>
               </div>
               <div className="divider">OR</div>
-              <div className="grid h-10  border card  rounded-box place-items-center">
-                <div className="absolute  flex items-center justify-center ms-5">
+              <div onClick={loginwithFacebook} className="grid h-10  border card  rounded-box place-items-center">
+                <button className="absolute  flex items-center justify-center ms-5">
                   <img
                     className="h-7 me-2"
                     src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/480px-Facebook_f_logo_%282021%29.svg.png"
                     alt=""
                   />
                   <h6 className="text-lg font-medium">Login with Facebook</h6>
-                </div>
+                </button>
               </div>
             </div>
             <Typography color="gray" className="mt-4 text-center font-normal">

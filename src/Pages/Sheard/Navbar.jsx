@@ -43,7 +43,11 @@ const profileMenuItems = [
     icon: InboxArrowDownIcon,
   },
   {
-    label: <Link to="/registration">Registration</Link>,
+    label: (
+      <button className="w-full">
+        <Link to="/registration">Registration</Link>
+      </button>
+    ),
     icon: LifebuoyIcon,
   },
   // {
