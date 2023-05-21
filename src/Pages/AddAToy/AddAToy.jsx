@@ -26,7 +26,7 @@ const AddAToy = () => {
     const toyName = fieldValue.toyName.value;
     const email = fieldValue.email.value;
     const sellername = fieldValue.sellername.value;
-    const price = fieldValue.price.value;
+    const price = parseInt(fieldValue.price.value);
     const rating = fieldValue.rating.value;
     const quantity = fieldValue.quantity.value;
     const category = temp;

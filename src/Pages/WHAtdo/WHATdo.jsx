@@ -12,7 +12,7 @@ const WHATdo = () => {
         <div>
           <h4 className="text-2xl font-bold">WHAT WE DO</h4>
           <h1 className=" mt-2 text-6xl text-orange-400">We help learn for kids</h1>
-          <p className="mt-3">
+          <p className="mt-3 text-3xl">
             Fun, educational activities for every <br /> occasion with premium toys and
             snacks. <br /> Learn more about our services!
           </p>

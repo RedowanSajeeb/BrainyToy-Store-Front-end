@@ -19,7 +19,7 @@ const DataUpdate = () => {
     event.preventDefault();
 
     const fieldValue = event.target;
-    const price = fieldValue.price.value;
+    const price = parseInt(fieldValue.price.value);
     const quantity = fieldValue.quantity.value;
     const description = fieldValue.description.value;
     const brainyAllData = {
