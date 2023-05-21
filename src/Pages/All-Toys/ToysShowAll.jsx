@@ -1,8 +1,18 @@
 // import React, { useState } from "react";
+import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { Toaster, toast } from "react-hot-toast";
 const ToysShowAll = () => {
   const allToys = useLoaderData();
 // console.log(toyone);
+const {user} = useContext(AuthContext)
+
+const userLoginAlart = () =>{
+    if(!user){
+        toast.error("Please login  first than visit!")
+    }
+}
   return (
     <div className="max-w-main mx-auto md:ms-14 md:mr-14">
       <div className="overflow-x-auto w-full mt-5 md:mt-20 mb-4 md:mb-12">
@@ -44,12 +54,9 @@ const ToysShowAll = () => {
                 </td>
                 <td>{toy.sellername}</td>
                 <th>
-                  <Link to={`/details/${toy._id}`}>
-                    <button
-                      className="btn btn-outline btn-xs"
-                    >
-                      details
-                    </button>
+                  <Link to={`/details/${toy._id}`} onClick={userLoginAlart}>
+                    <button className="btn btn-outline btn-xs">details</button>
+                    <Toaster></Toaster>
                   </Link>
                 </th>
               </tr>
