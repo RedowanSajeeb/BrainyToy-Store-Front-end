@@ -23,7 +23,7 @@ import {
   LifebuoyIcon,
   Bars2Icon,
 } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
 
@@ -231,11 +231,13 @@ function NavList() {
         </Link>
       ) : null}
       {user && (
-        <Typography>
-          <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
-            My Toys
-          </MenuItem>
-        </Typography>
+        <Link to={"/mytoy"}>
+          <Typography>
+            <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
+              My Toys
+            </MenuItem>
+          </Typography>
+        </Link>
       )}
       {user && (
         <Link to={"/addAToy"}>
@@ -271,18 +273,18 @@ export default function ComplexNavbar() {
   return (
     <Navbar className="sticky inset-0 z-10 h-max max-w-full p-2  lg:pl-6">
       <div className="relative mx-auto flex items-center text-blue-gray-900">
-        <Typography
-          className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
-        >
-          <div className="flex justify-center items-center">
-            <img
-              className="h-20"
-              src="https://images.vexels.com/media/users/3/189965/isolated/preview/2fa8f49698539df25f9d1bb0ea22e5d9-toy-dice-icon.png"
-              alt=""
-            />
-            <span className="md:text-3xl">BrainYToy Store</span>
-          </div>
-        </Typography>
+        <NavLink to={"/"}>
+          <Typography className="mr-4 ml-2 cursor-pointer py-1.5 font-medium">
+            <div className="flex justify-center items-center">
+              <img
+                className="h-20"
+                src="https://images.vexels.com/media/users/3/189965/isolated/preview/2fa8f49698539df25f9d1bb0ea22e5d9-toy-dice-icon.png"
+                alt=""
+              />
+              <span className="md:text-3xl">BrainYToy Store</span>
+            </div>
+          </Typography>
+        </NavLink>
         <div className="absolute top-2/4 left-2/4 hidden -translate-x-2/4 -translate-y-2/4 lg:block">
           <NavList />
         </div>
