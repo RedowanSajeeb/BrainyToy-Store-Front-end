@@ -54,9 +54,10 @@ const router = createBrowserRouter([
         path: "/mytoy",
         element: <Mytoy></Mytoy>,
       },
-      {
-        path: "/update",
+      {      
+        path: "/update/:id",
         element: <DataUpdate></DataUpdate> ,
+        loader: ({ params }) => fetch(`http://localhost:5000/brainy/${params.id}`)
       }
     ],
   },

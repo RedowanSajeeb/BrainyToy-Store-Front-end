@@ -59,7 +59,7 @@ const Mytoy = () => {
             <span className="text-orange-600 text-2xl">
               {user?.displayName}
             </span>{" "}
-            Your Added Toy Itms 
+            Your Added Toy Itms
           </h1>
         )}
         <div className="overflow-x-auto w-full mt-2 md:mt-10 mb-4 md:mb-12">
@@ -77,7 +77,10 @@ const Mytoy = () => {
               {usertoy.map((toy) => (
                 <tr key={toy._id}>
                   <td>
-                    <button onClick={ () => handlerDeltItmInMongodb (toy._id)} className="btn btn-square btn-outline">
+                    <button
+                      onClick={() => handlerDeltItmInMongodb(toy._id)}
+                      className="btn btn-square btn-outline"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
@@ -122,7 +125,7 @@ const Mytoy = () => {
                   </td>
                   <td>{toy.email}</td>
                   <th>
-                    <Link  to={"/update"}>
+                    <Link to={`/update/${toy._id}`}>
                       <button className="btn btn-outline">
                         <img
                           className="h-10"

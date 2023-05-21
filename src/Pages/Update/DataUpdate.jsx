@@ -9,12 +9,14 @@ import {
 } from "@material-tailwind/react";
 
 
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 
 const DataUpdate = () => {
-
+    const { _id } = useLoaderData()
+    // console.log(_id);
     const addANewToyHandlersCallback1 = (event) => {
-      event.preventDefault();
+    event.preventDefault();
 
     const fieldValue = event.target;
     const price = fieldValue.price.value;
@@ -26,7 +28,22 @@ const DataUpdate = () => {
       quantity,
       description,
     };
-   console.log(brainyAllData);
+//    console.log(brainyAllData);
+
+        fetch(`http://localhost:5000/brainy/${_id}`,{
+            method: "PUT",
+
+            headers :{'content-type': 'application/json'},
+            body : JSON.stringify(brainyAllData)
+
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.modifiedCount > 0){
+                toast.success('Data modified successfully')
+            }
+        })
 
 
     }
