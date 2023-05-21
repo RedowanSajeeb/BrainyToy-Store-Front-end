@@ -2,6 +2,8 @@
 
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 // import { Link } from "react-router-dom";
 // import { Toaster } from "react-hot-toast";
 
@@ -17,6 +19,38 @@ const Mytoy = () => {
     },[url])
 
     console.log(user);
+
+
+   const  handlerDeltItmInMongodb = (id) =>{
+    
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/brainy/${id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.deletedCount > 0) {
+
+                const remaining = usertoy.filter(toy => toy._id !== id)
+                   setUsertoy(remaining)
+                Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              }
+            });
+        }
+      });
+   }
+
+
     return (
       <div className="max-w-main mx-auto md:ms-14 md:mr-14">
         {user && (
@@ -25,7 +59,7 @@ const Mytoy = () => {
             <span className="text-orange-600 text-2xl">
               {user?.displayName}
             </span>{" "}
-            Your Added Toy Itms
+            Your Added Toy Itms 
           </h1>
         )}
         <div className="overflow-x-auto w-full mt-2 md:mt-10 mb-4 md:mb-12">
@@ -43,7 +77,7 @@ const Mytoy = () => {
               {usertoy.map((toy) => (
                 <tr key={toy._id}>
                   <td>
-                    <button className="btn btn-square btn-outline">
+                    <button onClick={ () => handlerDeltItmInMongodb (toy._id)} className="btn btn-square btn-outline">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-6 w-6"
@@ -88,14 +122,16 @@ const Mytoy = () => {
                   </td>
                   <td>{toy.email}</td>
                   <th>
-                    <button className="btn btn-outline">
-                      <img
-                        className="h-10"
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQybgGQF6AaXQEVTBvforov6RwN6BUDLHT8B-uiaFGyO_0PIrNO1gYFu13UF7AWgScjWxA&usqp=CAU"
-                        alt=""
-                      />
-                      Upddate
-                    </button>
+                    <Link  to={"/update"}>
+                      <button className="btn btn-outline">
+                        <img
+                          className="h-10"
+                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQybgGQF6AaXQEVTBvforov6RwN6BUDLHT8B-uiaFGyO_0PIrNO1gYFu13UF7AWgScjWxA&usqp=CAU"
+                          alt=""
+                        />
+                        Upddate
+                      </button>
+                    </Link>
                   </th>
                 </tr>
               ))}

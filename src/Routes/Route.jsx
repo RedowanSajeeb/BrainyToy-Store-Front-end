@@ -9,6 +9,7 @@ import ToysShowAll from "../Pages/All-Toys/ToysShowAll";
 import Details from "../Pages/All-Toys/Details";
 import PrivateRoutes from "./PrivateRoutes";
 import Mytoy from "../Pages/MyToys/Mytoy";
+import Update from "../Pages/Update/Update";
 
 
 
@@ -41,13 +42,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <PrivateRoutes><Details></Details></PrivateRoutes>,
-         loader: ({ params }) => fetch(`http://localhost:5000/brainy/${params.id}`),
+        element: (
+          <PrivateRoutes>
+            <Details></Details>
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/brainy/${params.id}`),
       },
       {
         path: "/mytoy",
-        element :<Mytoy></Mytoy>
-      }
+        element: <Mytoy></Mytoy>,
+      },
+      {
+        path: "/update",
+        element: <Update></Update>,
+      },
     ],
   },
 
