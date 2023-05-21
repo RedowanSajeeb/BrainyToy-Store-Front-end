@@ -45,7 +45,7 @@ const AddAToy = () => {
     };
 
     //  send data to server
-      fetch("http://localhost:5000/brainy",{
+      fetch("https://brainy-toy-store-server-side.vercel.app/brainy",{
        method: 'POST',
        headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify(brainyAllData)

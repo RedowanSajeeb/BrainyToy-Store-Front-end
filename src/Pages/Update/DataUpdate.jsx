@@ -30,7 +30,7 @@ const DataUpdate = () => {
     };
 //    console.log(brainyAllData);
 
-        fetch(`http://localhost:5000/brainy/${_id}`,{
+        fetch(`https://brainy-toy-store-server-side.vercel.app/brainy/${_id}`,{
             method: "PUT",
 
             headers :{'content-type': 'application/json'},

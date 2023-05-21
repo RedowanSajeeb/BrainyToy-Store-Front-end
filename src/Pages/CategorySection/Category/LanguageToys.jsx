@@ -7,7 +7,7 @@ const LanguageToys = () => {
 
       const [language, setLanguage] = useState([]);
       useEffect(() => {
-        fetch("http://localhost:5000/languageToys")
+        fetch("https://brainy-toy-store-server-side.vercel.app/languageToys")
           .then((res) => res.json())
           .then((data) => setLanguage(data));
       }, []);

@@ -7,7 +7,7 @@ const Science = () => {
 
      const [science, setScience] = useState([]);
      useEffect(() => {
-       fetch("http://localhost:5000/scienceToys")
+       fetch("https://brainy-toy-store-server-side.vercel.app/scienceToys")
          .then((res) => res.json())
          .then((data) => setScience(data));
      }, []);

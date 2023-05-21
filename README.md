@@ -9,6 +9,7 @@
 ## Project Live LINk
 
  - [ Live Site ](https://brainy-toy-store.web.app/)
+ - [ server Site live link  ](https://brainy-toy-store-server-side.vercel.app/)
  - [ Server Side GitHub Link ](https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-server-side-RedowanSajeeb)
 
 ## Features

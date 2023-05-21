@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       {
         path: "/allToys",
         element: <ToysShowAll></ToysShowAll>,
-        loader: () => fetch("http://localhost:5000/brainy"),
+        loader: () => fetch("https://brainy-toy-store-server-side.vercel.app/brainy"),
       },
       {
         path: "/details/:id",
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/brainy/${params.id}`),
+          fetch(`https://brainy-toy-store-server-side.vercel.app/brainy/${params.id}`),
       },
       {
         path: "/mytoy",
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
       {      
         path: "/update/:id",
         element: <DataUpdate></DataUpdate> ,
-        loader: ({ params }) => fetch(`http://localhost:5000/brainy/${params.id}`)
+        loader: ({ params }) => fetch(`https://brainy-toy-store-server-side.vercel.app/brainy/${params.id}`)
       }
     ],
   },

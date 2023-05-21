@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const Mytoy = () => {
     const {user} = useContext(AuthContext)
     const [usertoy,setUsertoy] = useState([])
-    const url = `http://localhost:5000/brainyemail?email=${user?.email}`;
+    const url = `https://brainy-toy-store-server-side.vercel.app/brainyemail?email=${user?.email}`;
     
     useEffect(()=>{
         fetch(url)
@@ -33,7 +33,7 @@ const Mytoy = () => {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/brainy/${id}`, {
+          fetch(`https://brainy-toy-store-server-side.vercel.app/brainy/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())

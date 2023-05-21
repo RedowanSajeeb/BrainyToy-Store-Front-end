@@ -9,20 +9,24 @@ const providerFacebook = new FacebookAuthProvider()
 export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
+  const [loding, setloding] = useState(true);
 
   // createUserWithEmailAndPassword
 
   const createUserWithEmailAndPass = (email, password) => {
+    setloding(false);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // signInWithEmailAndPassword
   const signInWithEmAndpass = (email, password) => {
+    setloding(false);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // Authenticate Using Google
   const googleAuthenticate = () => {
+    setloding(false);
     return signInWithPopup(auth, providerGoogle);
   };
   // Authenticate Using Facebook Login
@@ -63,6 +67,8 @@ const AuthProvider = ({children}) => {
     logOut,
     userProfile,
     authenticateUsingFacebook,
+    loding,
+    setloding,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

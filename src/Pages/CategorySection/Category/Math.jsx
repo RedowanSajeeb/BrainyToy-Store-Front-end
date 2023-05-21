@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Math = () => {
     const [mathtoy,setMathtoy] = useState([])
     useEffect(()=>{
-        fetch("http://localhost:5000/categorymath")
+        fetch("https://brainy-toy-store-server-side.vercel.app/categorymath")
         .then(res => res.json())
         .then(data => setMathtoy(data))
     },[])

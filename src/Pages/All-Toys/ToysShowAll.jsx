@@ -26,7 +26,7 @@ const search = (e) => {
   const searchText = e.target.search.value;
   console.log(searchText);
 
-  fetch(`http://localhost:5000/getSearchByToyName/${searchText}`, {
+  fetch(`https://brainy-toy-store-server-side.vercel.app/getSearchByToyName/${searchText}`, {
     method: "GET",
   })
     .then((res) => res.json())
@@ -39,7 +39,7 @@ const search = (e) => {
 // ASCENDING;
 
 const aSCENDING = () =>{
-     fetch("http://localhost:5000/ascending", {
+     fetch("https://brainy-toy-store-server-side.vercel.app/ascending", {
        method: "GET",
      })
        .then((res) => res.json())
@@ -50,7 +50,7 @@ const aSCENDING = () =>{
 }
 // dESCENDING
 const dESCENDING = () => {
-  fetch("http://localhost:5000/descending", {
+  fetch("https://brainy-toy-store-server-side.vercel.app/descending", {
     method: "GET",
   })
     .then((res) => res.json())
