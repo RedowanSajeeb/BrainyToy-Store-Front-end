@@ -16,7 +16,7 @@ const userLoginAlart = () =>{
   return (
     <div className="max-w-main mx-auto md:ms-14 md:mr-14">
       <div className="overflow-x-auto w-full mt-5 md:mt-20 mb-4 md:mb-12">
-        <table className="table w-full">
+        <table className="table table-zebra rounded-2xl w-full">
           <thead>
             <tr>
               <th>Name & Category</th>
