@@ -9,14 +9,11 @@ import {
   MenuList,
   MenuItem,
   Avatar,
-  
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
 import {
-
   UserCircleIcon,
- 
   ChevronDownIcon,
   Cog6ToothIcon,
   InboxArrowDownIcon,
@@ -59,20 +56,18 @@ function ProfileMenu() {
   const { user, logOut } = useContext(AuthContext);
   // console.log(user);
 
-  const signOutHandelar = () =>{
-     logOut()
-       .then(() => {
-         // Sign-out successful.
-         toast.success("Sign-out successful");
-       })
-       .catch((error) => {
-         toast.error(error)
-       });
-  }
+  const signOutHandelar = () => {
+    logOut()
+      .then(() => {
+        // Sign-out successful.
+        toast.success("Sign-out successful");
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
+  };
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
-
-    
 
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -80,7 +75,7 @@ function ProfileMenu() {
         <Button
           variant="text"
           color="blue-gray"
-          className="flex items-center md:me-20 gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
+          className="flex items-center md:me-20 gap-1 rounded-full  pr-2 pl-0.5 lg:ml-auto"
         >
           {user ? (
             <>
@@ -163,8 +158,7 @@ function ProfileMenu() {
 
 // nav list menu
 const navListMenuItems = [
-
-// ----------
+  // ----------
 ];
 
 function NavListMenu() {
@@ -175,8 +169,8 @@ function NavListMenu() {
   //   onMouseLeave: () => setIsMenuOpen(false),
   // };
 
-  const renderItems = navListMenuItems.map(({ title, description },idx) => (
-    <link  key={idx}>
+  const renderItems = navListMenuItems.map(({ title, description }, idx) => (
+    <link key={idx}>
       <MenuItem>
         <Typography variant="h6" color="blue-gray" className="mb-1">
           {title}
@@ -198,7 +192,6 @@ function NavListMenu() {
 }
 
 // nav list component
-
 
 function NavList() {
   const { user } = useContext(AuthContext);
@@ -277,7 +270,7 @@ export default function ComplexNavbar() {
           <Typography className="mr-4 ml-2 cursor-pointer py-1.5 font-medium">
             <div className="flex justify-center items-center">
               <img
-                className="h-20"
+                className="h-16"
                 src="https://images.vexels.com/media/users/3/189965/isolated/preview/2fa8f49698539df25f9d1bb0ea22e5d9-toy-dice-icon.png"
                 alt=""
               />
