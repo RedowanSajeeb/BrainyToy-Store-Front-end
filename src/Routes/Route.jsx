@@ -10,6 +10,7 @@ import Details from "../Pages/All-Toys/Details";
 import PrivateRoutes from "./PrivateRoutes";
 import Mytoy from "../Pages/MyToys/Mytoy";
 import DataUpdate from "../Pages/Update/DataUpdate";
+import Blog from "../Pages/Blog/Blog";
 
 
 
@@ -38,7 +39,8 @@ const router = createBrowserRouter([
       {
         path: "/allToys",
         element: <ToysShowAll></ToysShowAll>,
-        loader: () => fetch("https://brainy-toy-store-server-side.vercel.app/brainy"),
+        loader: () =>
+          fetch("https://brainy-toy-store-server-side.vercel.app/brainy"),
       },
       {
         path: "/details/:id",
@@ -48,17 +50,26 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`https://brainy-toy-store-server-side.vercel.app/brainy/${params.id}`),
+          fetch(
+            `https://brainy-toy-store-server-side.vercel.app/brainy/${params.id}`
+          ),
       },
       {
         path: "/mytoy",
         element: <Mytoy></Mytoy>,
       },
-      {      
+      {
+        path: "/blogs",
+        element : <Blog></Blog>
+      },
+      {
         path: "/update/:id",
-        element: <DataUpdate></DataUpdate> ,
-        loader: ({ params }) => fetch(`https://brainy-toy-store-server-side.vercel.app/brainy/${params.id}`)
-      }
+        element: <DataUpdate></DataUpdate>,
+        loader: ({ params }) =>
+          fetch(
+            `https://brainy-toy-store-server-side.vercel.app/brainy/${params.id}`
+          ),
+      },
     ],
   },
 
