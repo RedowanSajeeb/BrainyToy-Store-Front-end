@@ -9,7 +9,7 @@ import ToysShowAll from "../Pages/All-Toys/ToysShowAll";
 import Details from "../Pages/All-Toys/Details";
 import PrivateRoutes from "./PrivateRoutes";
 import Mytoy from "../Pages/MyToys/Mytoy";
-import Update from "../Pages/Update/Update";
+import DataUpdate from "../Pages/Update/DataUpdate";
 
 
 
@@ -56,8 +56,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/update",
-        element: <Update></Update>,
-      },
+        element: <DataUpdate></DataUpdate> ,
+      }
     ],
   },
 
