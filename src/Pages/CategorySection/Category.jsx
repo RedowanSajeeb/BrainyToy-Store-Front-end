@@ -8,6 +8,7 @@ import {
 import Math from "./Category/Math";
 import Science from "./Category/Science";
 import LanguageToys from "./Category/LanguageToys";
+import EngineeringTools from "./Category/EngineeringTools";
 
 export default function Category() {
 
@@ -31,8 +32,7 @@ export default function Category() {
     {
       label: "engineering tools",
       value: "angular",
-      desc: `Because it's about motivating the doers. Because I'm here
-      to follow my dreams and inspire other people to follow their dreams, too.`,
+      desc: <EngineeringTools></EngineeringTools>,
     },
   ];
 
