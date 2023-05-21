@@ -1,6 +1,7 @@
 // import React from 'react';
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Math = () => {
     const [mathtoy,setMathtoy] = useState([])
@@ -27,9 +28,13 @@ const Math = () => {
                 <span className="text-lg font-semibold">rating:</span>{" "}
                 {math.rating}
               </h6>
-              <div className="card-actions mt-3">
-                <button className="btn btn-outline w-full">View Details</button>
-              </div>
+              <Link to={`/details/${math._id}`}>
+                <div className="card-actions mt-3">
+                  <button className="btn btn-outline w-full">
+                    View Details
+                  </button>
+                </div>
+              </Link>
             </div>
           </div>
         ))}

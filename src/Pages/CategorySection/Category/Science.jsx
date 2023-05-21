@@ -1,6 +1,7 @@
 // import React from 'react';
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Science = () => {
 
@@ -16,10 +17,16 @@ const Science = () => {
         {science.map((scien) => (
           <div className="card   w-auto  md:w-96 glass" key={scien._id}>
             <figure>
-              <img className="h-52 mt-3 " src={scien.toyPictureURL} alt="car!" />
+              <img
+                className="h-52 mt-3 "
+                src={scien.toyPictureURL}
+                alt="car!"
+              />
             </figure>
             <div className="card-body">
-              <h2 className="card-title text-2xl mt-2 mb-3">{scien?.toyName}</h2>
+              <h2 className="card-title text-2xl mt-2 mb-3">
+                {scien?.toyName}
+              </h2>
               <p>
                 <span className="text-lg font-semibold">Price:</span> $
                 {scien.price}
@@ -28,9 +35,13 @@ const Science = () => {
                 <span className="text-lg font-semibold">rating:</span>{" "}
                 {scien.rating}
               </h6>
-              <div className="card-actions mt-3">
-                <button className="btn btn-outline w-full">View Details</button>
-              </div>
+              <Link to={`/details/${scien._id}`}>
+                <div className="card-actions mt-3">
+                  <button className="btn btn-outline w-full">
+                    View Details
+                  </button>
+                </div>
+              </Link>
             </div>
           </div>
         ))}

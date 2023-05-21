@@ -1,6 +1,7 @@
 // import React from 'react';
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const LanguageToys = () => {
 
@@ -16,16 +17,10 @@ const LanguageToys = () => {
         {language.map((Lang) => (
           <div className="card   w-auto  md:w-96 glass" key={Lang._id}>
             <figure>
-              <img
-                className="h-52 mt-3 "
-                src={Lang.toyPictureURL}
-                alt="car!"
-              />
+              <img className="h-52 mt-3 " src={Lang.toyPictureURL} alt="car!" />
             </figure>
             <div className="card-body">
-              <h2 className="card-title text-2xl mt-2 mb-3">
-                {Lang?.toyName}
-              </h2>
+              <h2 className="card-title text-2xl mt-2 mb-3">{Lang?.toyName}</h2>
               <p>
                 <span className="text-lg font-semibold">Price:</span> $
                 {Lang.price}
@@ -34,9 +29,13 @@ const LanguageToys = () => {
                 <span className="text-lg font-semibold">rating:</span>{" "}
                 {Lang.rating}
               </h6>
-              <div className="card-actions mt-3">
-                <button className="btn btn-outline w-full">View Details</button>
-              </div>
+              <Link to={`/details/${Lang._id}`}>
+                <div className="card-actions mt-3">
+                  <button className="btn btn-outline w-full">
+                    View Details
+                  </button>
+                </div>
+              </Link>
             </div>
           </div>
         ))}
