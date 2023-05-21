@@ -6,6 +6,7 @@ import Registration from "../Pages/Registration/Registration";
 import Login from "../Pages/Login/Login";
 import AddAToy from "../Pages/AddAToy/AddAToy";
 import ToysShowAll from "../Pages/All-Toys/ToysShowAll";
+import Details from "../Pages/All-Toys/Details";
 
 
 
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
         path: "/allToys",
         element: <ToysShowAll></ToysShowAll>,
         loader: () => fetch("http://localhost:5000/brainy"),
+      },
+      {
+        path: "/details/:id",
+        element: <Details></Details>,
+         loader: ({ params }) => fetch(`http://localhost:5000/brainy/${params.id}`),
       },
     ],
   },
