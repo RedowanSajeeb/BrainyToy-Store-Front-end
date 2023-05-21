@@ -7,11 +7,17 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
 import { FacebookAuthProvider } from "firebase/auth";
 const Registration = () => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+
 const {
   createUserWithEmailAndPass,
   googleAuthenticate,
@@ -101,6 +107,7 @@ const loginwithGoogleHandelar = () =>{
       const user = result.user;
       if(user){
         toast.success("Login successful! Welcome to your account");
+        navigate(from, { replace: true });
       }
  
     
@@ -125,6 +132,7 @@ const loginwithFacebook = () =>{
       const user = result.user;
        if (user) {
          toast.success("Login successful! Welcome to your account");
+         navigate(from, { replace: true });
        }
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const credential = FacebookAuthProvider.credentialFromResult(result);

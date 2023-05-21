@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import AddAToy from "../Pages/AddAToy/AddAToy";
 import ToysShowAll from "../Pages/All-Toys/ToysShowAll";
 import Details from "../Pages/All-Toys/Details";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <Details></Details>,
+        element: <PrivateRoutes><Details></Details></PrivateRoutes>,
          loader: ({ params }) => fetch(`http://localhost:5000/brainy/${params.id}`),
       },
     ],
