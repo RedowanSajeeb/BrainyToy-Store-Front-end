@@ -36,7 +36,7 @@ const Details = () => {
               <p>price: ${price}</p>
             </div>
             <div className="mockup-window border mt-4 border-base-200">
-              <div className="flex justify-center px-4 py-16 border-t border-base-300">
+              <div className=" px-3 py-10 border-t border-base-300">
                 {description}
               </div>
             </div>
