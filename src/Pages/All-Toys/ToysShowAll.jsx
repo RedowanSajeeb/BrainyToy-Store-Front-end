@@ -36,6 +36,29 @@ const search = (e) => {
     });
 };
 
+// ASCENDING;
+
+const aSCENDING = () =>{
+     fetch("http://localhost:5000/ascending", {
+       method: "GET",
+     })
+       .then((res) => res.json())
+       .then((data) => {
+         console.log(data);
+         setAlltoy(data)
+       });
+}
+// dESCENDING
+const dESCENDING = () => {
+  fetch("http://localhost:5000/descending", {
+    method: "GET",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      setAlltoy(data);
+    });
+};
 
 
 
@@ -45,11 +68,11 @@ const TABS = [
     value: "all",
   },
   {
-    label: "ASCENDING",
+    label: <button onClick={aSCENDING}>ASCENDING</button>,
     value: "ASCENDING",
   },
   {
-    label: "DESCENDING",
+    label: <button onClick={dESCENDING}>DESCENDING</button>,
     value: "DESCENDING",
   },
 ];
