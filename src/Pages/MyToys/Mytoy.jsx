@@ -32,17 +32,34 @@ const Mytoy = () => {
           <table className="table table-zebra rounded-2xl w-full">
             <thead>
               <tr>
-                <th></th>
+                <th>Remove itm</th>
                 <th>Name & Category</th>
                 <th>Price & Available Quantity</th>
                 <th>User email</th>
-                <th> details</th>
+                <th> Upddate</th>
               </tr>
             </thead>
             <tbody>
               {usertoy.map((toy) => (
                 <tr key={toy._id}>
-                  <td></td>
+                  <td>
+                    <button className="btn btn-square btn-outline">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </td>
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
@@ -71,12 +88,14 @@ const Mytoy = () => {
                   </td>
                   <td>{toy.email}</td>
                   <th>
-                    {/* <Link to={`/details/${toy._id}`} onClick={userLoginAlart}>
-                      <button className="btn btn-outline btn-xs">
-                        details
-                      </button>
-                      <Toaster></Toaster>
-                    </Link> */}
+                    <button className="btn btn-outline">
+                      <img
+                        className="h-10"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQybgGQF6AaXQEVTBvforov6RwN6BUDLHT8B-uiaFGyO_0PIrNO1gYFu13UF7AWgScjWxA&usqp=CAU"
+                        alt=""
+                      />
+                      Upddate
+                    </button>
                   </th>
                 </tr>
               ))}
