@@ -9,6 +9,7 @@ import ToysShowAll from "../Pages/All-Toys/ToysShowAll";
 
 
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,11 +33,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/allToys",
-        element: <ToysShowAll></ToysShowAll> ,
+        element: <ToysShowAll></ToysShowAll>,
         loader: () => fetch("http://localhost:5000/brainy"),
       },
     ],
   },
+
   {
     path: "*",
     element: <F404></F404>,

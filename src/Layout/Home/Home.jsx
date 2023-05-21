@@ -1,6 +1,7 @@
 // import React from 'react';
 
 
+import Category from "../../Pages/CategorySection/Category";
 import Gallary from "./Gallary/Gallary";
 import Slider from "./Slider";
 
@@ -10,7 +11,8 @@ const Home = () => {
       <div>
         <Slider></Slider>
         <div className="max-w-fit mx-auto">
-          <Gallary></Gallary>
+        <Gallary></Gallary>
+        <Category></Category>
         </div>
       </div>
     );

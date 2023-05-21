@@ -43,7 +43,7 @@ console.log(selectedToyId);
               <th>Name & Category</th>
               <th>Price & Available Quantity</th>
               <th>Seller Name</th>
-              <th></th>
+              <th> details</th>
             </tr>
           </thead>
           <tbody>
