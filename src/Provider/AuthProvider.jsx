@@ -47,6 +47,7 @@ const AuthProvider = ({children}) => {
 
   useEffect(() => {
     const connection = onAuthStateChanged(auth, (currentUser) => {
+      setloding(false)
       setUser(currentUser);
     });
     return () => {

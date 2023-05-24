@@ -1,6 +1,7 @@
 // import React from 'react';
 
 
+import { useEffect } from "react";
 import Category from "../../Pages/CategorySection/Category";
 import OurCLints from "../../Pages/OURCLIENTS/OurCLints";
 import WHATdo from "../../Pages/WHAtdo/WHATdo";
@@ -9,6 +10,9 @@ import Slider from "./Slider";
 
 
 const Home = () => {
+            useEffect(() => {
+              document.title = "BrainYToy Store";
+            }, []);
     return (
       <div>
         <Slider></Slider>

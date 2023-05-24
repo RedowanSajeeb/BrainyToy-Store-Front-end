@@ -200,54 +200,54 @@ function NavList() {
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
       <NavListMenu />
 
-      <Link to={"/"}>
+      <NavLink to={"/"}>
         <Typography>
           <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
             Home
           </MenuItem>
         </Typography>
-      </Link>
-      <Link to={"/allToys"}>
+      </NavLink>
+      <NavLink to={"/allToys"}>
         <Typography>
           <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
             All Toys
           </MenuItem>
         </Typography>
-      </Link>
+      </NavLink>
       {!user ? (
-        <Link to={"/signin"}>
+        <NavLink to={"/signin"}>
           <Typography>
             <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
               Login
             </MenuItem>
           </Typography>
-        </Link>
+        </NavLink>
       ) : null}
       {user && (
-        <Link to={"/mytoy"}>
+        <NavLink to={"/mytoy"}>
           <Typography>
             <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
               My Toys
             </MenuItem>
           </Typography>
-        </Link>
+        </NavLink>
       )}
       {user && (
-        <Link to={"/addAToy"}>
+        <NavLink to={"/addAToy"}>
           <Typography>
             <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full 2">
               Add A Toy
             </MenuItem>
           </Typography>
-        </Link>
+        </NavLink>
       )}
-      <Link to={"/blogs"}>
+      <NavLink to={"/blogs"}>
         <Typography>
           <MenuItem className="text-gray-800 text-sm  flex items-center lg:rounded-full ">
             Blogs
           </MenuItem>
         </Typography>
-      </Link>
+      </NavLink>
     </ul>
   );
 }
@@ -266,7 +266,7 @@ export default function ComplexNavbar() {
   return (
     <Navbar className="sticky inset-0 z-10 h-max max-w-full p-2  lg:pl-6">
       <div className="relative mx-auto flex items-center text-blue-gray-900">
-        <NavLink to={"/"}>
+        <Link to={"/"}>
           <Typography className="mr-4 ml-2 cursor-pointer py-1.5 font-medium">
             <div className="flex justify-center items-center">
               <img
@@ -277,7 +277,7 @@ export default function ComplexNavbar() {
               <span className="md:text-3xl">BrainYToy Store</span>
             </div>
           </Typography>
-        </NavLink>
+        </Link>
         <div className="absolute top-2/4 left-2/4 hidden -translate-x-2/4 -translate-y-2/4 lg:block">
           <NavList />
         </div>

@@ -1,81 +1,129 @@
-// import React, { useState } from "react";
-import { useContext, useState } from "react";
+// import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Toaster, toast } from "react-hot-toast";
-
-import {  Button, CardHeader, Input, Tab, Tabs, TabsHeader, Typography } from "@material-tailwind/react";
-
+import {
+  Button,
+  CardHeader,
+  Input,
+  Tab,
+  TabPanel,
+  Tabs,
+  TabsBody,
+  TabsHeader,
+  Typography,
+} from "@material-tailwind/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { useContext, useEffect, useState } from "react";
+
 
 const ToysShowAll = () => {
   const alltoys = useLoaderData();
-// console.log(toyone);
-   const [alltoy, setAlltoy] = useState(alltoys);
-const {user} = useContext(AuthContext)
+  const [alltoy, setAlltoy] = useState(alltoys);
+  const [searchText, setSearchText] = useState("");
+  const { user } = useContext(AuthContext);
 
-const userLoginAlart = () =>{
-    if(!user){
-        toast.error("Please login  first than visit!")
+  const userLoginAlert = () => {
+    if (!user) {
+      toast.error("Please log in first before visiting!");
     }
-}
+  };
+useEffect(() => {
+  document.title = "All Toys";
+}, []);
+  const search = () => {
+    fetch(
+      `https://brainy-toy-store-server-side.vercel.app/getSearchByToyName/${searchText}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setAlltoy(data);
+      });
+  };
 
+  const all = () => {
+    fetch("https://brainy-toy-store-server-side.vercel.app/brainy")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setAlltoy(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
 
-const search = (e) => {
-  e.preventDefault();
-  const searchText = e.target.search.value;
-  console.log(searchText);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://brainy-toy-store-server-side.vercel.app/brainy"
+        );
+        const data = await response.json();
+        console.log(data);
+        setAlltoy(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-  fetch(`https://brainy-toy-store-server-side.vercel.app/getSearchByToyName/${searchText}`, {
-    method: "GET",
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      setAlltoy(data)
-    });
-};
+    fetchData();
+  }, []);
 
-// ASCENDING;
+  const aSCENDING = () => {
+    fetch("https://brainy-toy-store-server-side.vercel.app/ascending")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setAlltoy(data);
+      });
+  };
 
-const aSCENDING = () =>{
-     fetch("https://brainy-toy-store-server-side.vercel.app/ascending", {
-       method: "GET",
-     })
-       .then((res) => res.json())
-       .then((data) => {
-         console.log(data);
-         setAlltoy(data)
-       });
-}
-// dESCENDING
-const dESCENDING = () => {
-  fetch("https://brainy-toy-store-server-side.vercel.app/descending", {
-    method: "GET",
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      setAlltoy(data);
-    });
-};
+  const dESCENDING = () => {
+    fetch("https://brainy-toy-store-server-side.vercel.app/descending")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setAlltoy(data);
+      });
+  };
 
+  const TABS = [
+    {
+      label: (
+        <Button  color="amber" onClick={all}>
+          All
+        </Button>
+      ),
+      value: "all",
+    },
+    {
+      label: (
+        <Button color="amber" onClick={dESCENDING}>
+          DESCENDING
+        </Button>
+      ),
+      value: "DESCENDING",
+    },
+    {
+      label: (
+        <Button color="amber" onClick={aSCENDING}>
+          ASCENDING
+        </Button>
+      ),
+      value: "ASCENDING",
+    },
+  ];
 
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+  };
 
-const TABS = [
-  {
-    label: "All",
-    value: "all",
-  },
-  {
-    label: <button onClick={aSCENDING}>ASCENDING</button>,
-    value: "ASCENDING",
-  },
-  {
-    label: <button onClick={dESCENDING}>DESCENDING</button>,
-    value: "DESCENDING",
-  },
-];
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    search();
+  };
 
   return (
     <div className="max-w-main mx-auto md:ms-14 md:mr-14">
@@ -91,19 +139,28 @@ const TABS = [
           </div>
         </div>
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <Tabs value="all" className="w-full md:w-max">
+          <Tabs className="mt-6 w-full" value="html">
             <TabsHeader>
               {TABS.map(({ label, value }) => (
                 <Tab key={value} value={value}>
-                  &nbsp;&nbsp;{label}&nbsp;&nbsp;
+                  {label}
                 </Tab>
               ))}
             </TabsHeader>
+            <TabsBody>
+              {TABS.map(({ value, desc }) => (
+                <TabPanel key={value} value={value}>
+                  {desc}
+                </TabPanel>
+              ))}
+            </TabsBody>
           </Tabs>
-          <form onSubmit={search} className="w-full md:w-72">
+          <form onChange={handleSearchSubmit} className="w-full md:w-72">
             <Input
               name="search"
               label="Search"
+              value={searchText}
+              onChange={handleSearchChange}
               icon={<MagnifyingGlassIcon className="h-5 w-5" />}
             />
             <button className="w-full">
@@ -154,7 +211,7 @@ const TABS = [
                 </td>
                 <td>{toy.sellername}</td>
                 <th>
-                  <Link to={`/details/${toy._id}`} onClick={userLoginAlart}>
+                  <Link to={`/details/${toy._id}`} onClick={userLoginAlert}>
                     <button className="btn btn-outline btn-xs">details</button>
                     <Toaster></Toaster>
                   </Link>

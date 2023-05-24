@@ -7,16 +7,15 @@ const Slider = () => {
       <Carousel autoplay={true} className=" md:h-[700px] ">
         <div className="relative h-full w-full">
           <img
-            src="https://img.freepik.com/premium-vector/abstract-concept-day-night_29937-8584.jpg?w=1380"
+            src="https://images.unsplash.com/photo-1595550903979-1969e5adeb92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80"
             alt="image 1"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 grid h-full w-full items-center bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] text-white">
             <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
               <Typography
-               
                 color="white"
-                className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+                className="mb-4  md:text-4xl lg:text-5xl"
               >
                 Where Learning Meets Play, a Haven for Growth
               </Typography>
@@ -34,16 +33,15 @@ const Slider = () => {
         </div>
         <div className="relative h-full w-full">
           <img
-            src="https://s.yimg.com/uu/api/res/1.2/od6GA2JDzpJqIa5yfmhD6w--~B/aD0xMjAwO3c9MjAwMDthcHBpZD15dGFjaHlvbg--/https://media-mbst-pub-ue1.s3.amazonaws.com/creatr-uploaded-images/2022-07/371f68e0-0391-11ed-b73f-4b112390d280.cf.jpg"
+            src="https://images.unsplash.com/photo-1567619863709-1d5361a78241?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
             alt="image 2"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 grid h-full w-full items-center  bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] text-white">
             <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
               <Typography
-               
                 color="white"
-                className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+                className="mb-4  md:text-4xl lg:text-5xl"
               >
                 Where Curiosity Thrives, Learning Flourishes - LearnPlay Haven
               </Typography>
@@ -68,9 +66,8 @@ const Slider = () => {
           <div className="absolute inset-0 grid h-full w-full items-end  bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] text-white">
             <div className="w-3/4 pl-12 pb-12 md:w-2/4 md:pl-20 md:pb-20 lg:pl-32 lg:pb-60">
               <Typography
-                
                 color="white"
-                className="mb-4 text-3xl md:text-4xl lg:text-5xl"
+                className="mb-4  md:text-4xl lg:text-5xl"
               >
                 Empowering Minds and Hearts through Learning and Play at
                 LearnPlay Haven

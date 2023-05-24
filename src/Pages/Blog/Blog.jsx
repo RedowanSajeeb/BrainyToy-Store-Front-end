@@ -1,6 +1,11 @@
 // import React from 'react';
 
+import { useEffect } from "react";
+
 const Blog = () => {
+   useEffect(() => {
+     document.title = "Blog";
+   }, []);
    return (
      <div className="side-container ms-5 me-5 mx-auto max-w-max">
        <div

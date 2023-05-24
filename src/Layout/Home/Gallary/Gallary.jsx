@@ -74,9 +74,15 @@ export default function Gallary() {
   return (
     <div className="p-3 md:p-5">
       <div className="text-center">
-       
-          <h1 className="md:text-5xl font-bold mt-14 mb-10">Our Gallery</h1>
-        
+        <h1 className="md:text-5xl text-4xl font-bold mt-14 mb-10 fontStyle">
+          Toy Gallery
+        </h1>
+        <p className="md:w-1/2 mx-auto text-gray-500 md:mt-3 mb-5">
+          Welcome to Edu Toy Gallery: Where Learning and Play Come Together!
+          <br />
+          Our carefully curated collection features toys that combine fun and
+          learning seamlessly. 
+        </p>
       </div>
       <PhotoAlbum
         className="grid grid-cols-1 md:grid-cols-3 gap-5"

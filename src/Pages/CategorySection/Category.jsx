@@ -37,10 +37,13 @@ export default function Category() {
   ];
 
   return (
-    <div>
-      <h2 className="text-4xl text-center mt-7 md:mt-8 md:mb-10 font-bold">
+    <div data-aos="fade-up" data-aos-duration="3000">
+      <h2 className="md:text-4xl text-2xl mb-4 text-center mt-7 md:mt-8 md:mb-5  fontStyle font-bold">
         Shop By <span>Category</span>
       </h2>
+      <h3 className="text-center md:mb-5">
+        Welcome to our Educational Toy Shop: Explore and Learn!
+      </h3>
       <Tabs className="mt-6" value="html">
         <TabsHeader>
           {data.map(({ label, value }) => (
