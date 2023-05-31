@@ -16,14 +16,22 @@
   background-color: rgb(255, 203, 59);
 }
 
-.fontStyle{
-  font-family: 'Merienda', cursive;
-}
-.body-font{
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
 
-}
 .text-font{
   font-family: 'Style Script', cursive;
 }
+.chicle{
+font-family: 'Chicle', cursive;
+}
+
+.merienda{
+font-family: 'Merienda', cursive;
+}
+.poppins{
+font-family: 'Poppins', sans-serif;
+}
+.rye{
+font-family: 'Rye', cursive;
+}
+
+/* -- */
